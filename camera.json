@@ -1,0 +1,123 @@
+[
+    {
+      "User": {
+        "Email": "user1@example.com",
+        "Password": "password1"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Canon",
+        "Model": "EOS Rebel T7",
+        "Price": "$499.99"
+      }
+    },
+    {
+      "User": {
+        "Email": "user2@example.com",
+        "Password": "password2"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Nikon",
+        "Model": "D3500",
+        "Price": "$399.99"
+      }
+    },
+    {
+      "User": {
+        "Email": "user3@example.com",
+        "Password": "password3"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Sony",
+        "Model": "Alpha a6000",
+        "Price": "$599.99"
+      }
+    },
+    {
+      "User": {
+        "Email": "user4@example.com",
+        "Password": "password4"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Fujifilm",
+        "Model": "X-T30",
+        "Price": "$899.95"
+      }
+    },
+    {
+      "User": {
+        "Email": "user5@example.com",
+        "Password": "password5"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Panasonic",
+        "Model": "Lumix DMC-G7",
+        "Price": "$497.99"
+      }
+    },
+    {
+      "User": {
+        "Email": "user6@example.com",
+        "Password": "password6"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Olympus",
+        "Model": "OM-D E-M10 Mark III",
+        "Price": "$599.00"
+      }
+    },
+    {
+      "User": {
+        "Email": "user7@example.com",
+        "Password": "password7"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Leica",
+        "Model": "D-Lux 7",
+        "Price": "$1,195.00"
+      }
+    },
+    {
+      "User": {
+        "Email": "user8@example.com",
+        "Password": "password8"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Pentax",
+        "Model": "K-70",
+        "Price": "$546.95"
+      }
+    },
+    {
+      "User": {
+        "Email": "user9@example.com",
+        "Password": "password9"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Samsung",
+        "Model": "NX500",
+        "Price": "$799.00"
+      }
+    },
+    {
+      "User": {
+        "Email": "user10@example.com",
+        "Password": "password10"
+      },
+      "Favourites": [],
+      "Camera": {
+        "Brand": "Hasselblad",
+        "Model": "X1D II 50C",
+        "Price": "$5,750.00"
+      }
+    }
+  ]
+  
