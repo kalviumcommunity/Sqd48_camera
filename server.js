@@ -15,11 +15,11 @@ app.get('/', (req, res) => {
   res.send(`connected status : ${mongoose.connection.readyState===1 ? 'connected':'disconnected'}`);
 });
 
-
 if (require.main === module) {
   app.listen(port, () => {
     console.log(`🚀 server running on PORT: ${port}`);
   });
 }
+
 
 module.exports = app;
