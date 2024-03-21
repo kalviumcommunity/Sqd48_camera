@@ -1,12 +1,34 @@
-// Landingpage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Landingpage.css';
+import axios from 'axios';
 
 const Landingpage = () => {
-  const [budget, setBudget] = useState(5000);
+  const [cameras, setCameras] = useState([]);
+
+  useEffect(() => {
+    fetchCameras();
+  }, []);
+
+  const fetchCameras = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/cameras');
+      if (response.status !== 200) {
+        throw new Error('Failed to fetch cameras');
+      }
+      setCameras(response.data);
+    } catch (error) {
+      console.error('Error fetching cameras:', error);
+    }
+  };
+
+  const [budget, setBudget] = useState(30000);
 
   const handleBudgetChange = (event) => {
     setBudget(event.target.value);
+  };
+
+  const filterCamerasByBudget = (cameras, budget) => {
+    return cameras.filter((camera) => camera.price <= budget);
   };
 
   return (
@@ -21,12 +43,12 @@ const Landingpage = () => {
             <li>
               <div className="budget-slider-container">
                 <div className="budget-slider">
-                  <div className="budget-label">Budget: ${budget}</div>
+                  <div className="budget-label">Budget: INR. {budget}</div>
                   <input
                     type="range"
                     id="budget-range"
-                    min="1000"
-                    max="10000"
+                    min="30000"
+                    max="300000"
                     value={budget}
                     onChange={handleBudgetChange}
                   />
@@ -56,6 +78,18 @@ const Landingpage = () => {
         {/*main content*/}
         <h2>Welcome to the Camera Project</h2>
         <p>Explore our collection of high-quality cameras and accessories.</p>
+        <div className="cameras-container">
+          <div className="row">
+            {filterCamerasByBudget(cameras, budget).map((camera, index) => (
+              <div key={index} className="column">
+                <div className="camera-item">
+                  <p className="camera-model">{camera.name}</p>
+                  <p className="camera-price">INR. {camera.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <footer>

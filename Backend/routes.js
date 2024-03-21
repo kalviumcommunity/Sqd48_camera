@@ -5,7 +5,7 @@ let users = [];
 
 // Read (GET) all users
 router.get('/users', (req, res) => {
-  res.json(users);
+  res.send(users);
 });
 
 // Read (GET) a single user by ID
@@ -19,7 +19,7 @@ router.get('/users/:id', (req, res) => {
 });
 
 // Create (POST) a new user
-router.post('/users', (req, res) => {
+router.post('/Createusers', (req, res) => {
   const { name, email } = req.body;
   if (!name || !email) {
     return res.status(400).json({ message: 'Name and email are required fields' });
@@ -30,7 +30,7 @@ router.post('/users', (req, res) => {
 });
 
 // Update (PUT) an existing user
-router.put('/users/:id', (req, res) => {
+router.put('/Updateusers/:id', (req, res) => {
   const userId = parseInt(req.params.id);
   const userIndex = users.findIndex(user => user.id === userId);
   if (userIndex === -1) {
@@ -46,7 +46,7 @@ router.put('/users/:id', (req, res) => {
 });
 
 // Delete (DELETE) a user by ID
-router.delete('/users/:id', (req, res) => {
+router.delete('/Deleteusers/:id', (req, res) => {
   const userId = parseInt(req.params.id);
   const userIndex = users.findIndex(user => user.id === userId);
   if (userIndex === -1) {
