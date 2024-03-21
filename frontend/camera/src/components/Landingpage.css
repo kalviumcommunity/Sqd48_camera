@@ -38,7 +38,8 @@
 
 .favorite-btn,
 .cart-btn,
-.login-btn {
+.login-btn,
+.sell-btn {
   background-color: #fff;
   color: #333;
   border: none;
@@ -65,6 +66,26 @@
 
 .budget-label {
   margin-right: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-right: 25vh;
+}
+
+.search-container input {
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  font-size: 18px;
+  width: 300px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+  border-color: #333;
 }
 
 .content {
