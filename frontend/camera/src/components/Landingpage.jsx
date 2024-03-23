@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Landingpage.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 const Landingpage = () => {
   const [cameras, setCameras] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,7 +42,7 @@ const Landingpage = () => {
   };
 
   const handleShowSellForm = () => {
-    navigate('/sellform')
+    navigate('/sellform');
   };
 
   return (
@@ -103,25 +104,27 @@ const Landingpage = () => {
       </div>
 
       <div className="content">
-          <>
-            <h2>Welcome to the Camera Project</h2>
-            <p>Explore our collection of high-quality cameras and accessories.</p>
-            <div className="cameras-container">
-              <div className="row">
-                {filterCamerasByBudgetAndBrand(cameras, budget, searchTerm).map(
-                  (camera, index) => (
-                    <div key={index} className="column">
-                      <div className="camera-item">
-                        <img src={camera.imgurl} alt={camera.name} />
-                        <p className="camera-model">{camera.name}</p>
-                        <p className="camera-price">INR. {camera.price}</p>
+        <>
+          <h2>Welcome to the Camera Project</h2>
+          <p>Explore our collection of high-quality cameras and accessories.</p>
+          <div className="cameras-container">
+            <div className="row">
+              {filterCamerasByBudgetAndBrand(cameras, budget, searchTerm).map(
+                (camera, index) => (
+                  <div key={index} className="column">
+                    <div className="camera-item">
+                      <img src={camera.imgurl} alt={camera.name} />
+                      <div className="camera-details">
+                        <strong><p className="camera-model">{camera.name}</p></strong>
+                        <strong><p className="camera-price">INR. {camera.price}</p></strong>
                       </div>
                     </div>
-                  )
-                )}
-              </div>
+                  </div>
+                )
+              )}
             </div>
-          </>
+          </div>
+        </>
       </div>
 
       <footer>

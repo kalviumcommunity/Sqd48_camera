@@ -56,6 +56,7 @@
 .budget-slider-container {
   display: flex;
   align-items: center;
+  margin-left: 55vh;
 }
 
 .budget-slider {
@@ -71,7 +72,6 @@
 .search-container {
   display: flex;
   align-items: center;
-  margin-right: 25vh;
 }
 
 .search-container input {
@@ -126,4 +126,26 @@ footer {
     flex: 0 0 calc(100% - 30px);
     max-width: calc(100% - 30px);
   }
+}
+
+.camera-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.camera-item img {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.camera-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
