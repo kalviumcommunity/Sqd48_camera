@@ -6,6 +6,10 @@ const cameraSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  imgurl: {
+    type: String,
+    required: true
+  },
   price: {
     type: Number,
     required: true

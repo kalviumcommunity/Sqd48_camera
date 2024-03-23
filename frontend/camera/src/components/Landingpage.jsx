@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Landingpage.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Landingpage = () => {
   const [cameras, setCameras] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [budget, setBudget] = useState(300000);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCameras();
@@ -21,14 +25,24 @@ const Landingpage = () => {
     }
   };
 
-  const [budget, setBudget] = useState(30000);
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
 
   const handleBudgetChange = (event) => {
     setBudget(event.target.value);
   };
 
-  const filterCamerasByBudget = (cameras, budget) => {
-    return cameras.filter((camera) => camera.price <= budget);
+  const filterCamerasByBudgetAndBrand = (cameras, budget, searchTerm) => {
+    return cameras.filter(
+      (camera) =>
+        camera.price <= budget &&
+        camera.name.toLowerCase().includes(searchTerm)
+    );
+  };
+
+  const handleShowSellForm = () => {
+    navigate('/sellform');
   };
 
   return (
@@ -40,6 +54,16 @@ const Landingpage = () => {
         </div>
         <nav className="navbar">
           <ul>
+            <li>
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search by brand..."
+                  value={searchTerm}
+                  onChange={handleSearch}
+                />
+              </div>
+            </li>
             <li>
               <div className="budget-slider-container">
                 <div className="budget-slider">
@@ -70,26 +94,37 @@ const Landingpage = () => {
             <li>
               <button className="login-btn">Sign Up/Login</button>
             </li>
+            <li>
+              <button className="sell-btn" onClick={handleShowSellForm}>
+                Sell
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
 
       <div className="content">
-        {/*main content*/}
-        <h2>Welcome to the Camera Project</h2>
-        <p>Explore our collection of high-quality cameras and accessories.</p>
-        <div className="cameras-container">
-          <div className="row">
-            {filterCamerasByBudget(cameras, budget).map((camera, index) => (
-              <div key={index} className="column">
-                <div className="camera-item">
-                  <p className="camera-model">{camera.name}</p>
-                  <p className="camera-price">INR. {camera.price}</p>
-                </div>
-              </div>
-            ))}
+        <>
+          <h2>Welcome to the Camera Project</h2>
+          <p>Explore our collection of high-quality cameras and accessories.</p>
+          <div className="cameras-container">
+            <div className="row">
+              {filterCamerasByBudgetAndBrand(cameras, budget, searchTerm).map(
+                (camera, index) => (
+                  <div key={index} className="column">
+                    <div className="camera-item">
+                      <img src={camera.imgurl} alt={camera.name} />
+                      <div className="camera-details">
+                        <strong><p className="camera-model">{camera.name}</p></strong>
+                        <strong><p className="camera-price">INR. {camera.price}</p></strong>
+                      </div>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
           </div>
-        </div>
+        </>
       </div>
 
       <footer>
