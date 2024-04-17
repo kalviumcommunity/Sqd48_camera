@@ -1,12 +1,16 @@
+// SellForm.jsx
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './SellForm.css'; // Import sellform.css file
 
 const SellForm = () => {
   const [price, setPrice] = useState('');
   const [modelName, setModelName] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,15 +21,14 @@ const SellForm = () => {
         price: parseFloat(price),
       };
 
-      const response = await axios.post('http://localhost:3001/cameras', formData);
+      const response = await axios.post('http://localhost:3001/sell-cameras', formData);
 
       if (response.status === 200) {
         console.log('Camera added successfully');
-        // Reset form fields or perform any other desired actions
         setPrice('');
         setModelName('');
         setImageUrl('');
-        navigate('/')
+        navigate('/sell');
       } else {
         console.error('Failed to add camera');
       }
@@ -35,9 +38,9 @@ const SellForm = () => {
   };
 
   return (
-    <div>
+    <div className="sell-form-container"> {/* Make sure to use a container class name */}
       <h2>Sell Your Camera</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="sell-form"> {/* Apply CSS class to form */}
         <div>
           <label htmlFor="price">Price:</label>
           <input

@@ -1,4 +1,12 @@
 /* Landingpage.css */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.content p {
+  padding-bottom: 20px;
+}
 
 .landing-page {
   font-family: Arial, sans-serif;
@@ -12,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 30px 20px;
 }
 
 .logo {
@@ -32,25 +40,19 @@
 }
 
 .navbar a {
-  color: #fff;
   text-decoration: none;
 }
 
-.favorite-btn,
-.cart-btn,
 .login-btn,
 .sell-btn {
-  background-color: #fff;
-  color: #333;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 14px 24px; /* Adjust padding for a larger button */
+  border-radius: 25px;
   cursor: pointer;
-}
-
-.favorite-btn i,
-.cart-btn i {
-  margin-right: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 16px; /* Adjust font size */
 }
 
 .budget-slider-container {
@@ -148,4 +150,5 @@ footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 }

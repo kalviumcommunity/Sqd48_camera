@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Landingpage.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Landingpage = () => {
   const [cameras, setCameras] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [budget, setBudget] = useState(300000);
+  const [budget, setBudget] = useState(500000);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,22 +35,22 @@ const Landingpage = () => {
   };
 
   const filterCamerasByBudgetAndBrand = (cameras, budget, searchTerm) => {
-    return cameras.filter(
-      (camera) =>
-        camera.price <= budget &&
-        camera.name.toLowerCase().includes(searchTerm)
-    );
+    return cameras
+      .sort((a, b) => b.price - a.price) // Sort cameras by price in descending order
+      .filter((camera) => camera.price <= budget)
+      .filter((camera) =>
+        camera.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
   };
 
   const handleShowSellForm = () => {
-    navigate('/sellform');
+    navigate('/sell');
   };
 
   return (
     <div className="landing-page">
       <div className="header">
         <div className="logo">
-          {/*logo image*/}
           <h1>Camera Project</h1>
         </div>
         <nav className="navbar">
@@ -65,34 +66,22 @@ const Landingpage = () => {
               </div>
             </li>
             <li>
-              <div className="budget-slider-container">
-                <div className="budget-slider">
-                  <div className="budget-label">Budget: INR. {budget}</div>
-                  <input
-                    type="range"
-                    id="budget-range"
-                    min="30000"
-                    max="300000"
-                    value={budget}
-                    onChange={handleBudgetChange}
-                  />
-                </div>
+              <div className="budget-slider">
+                <div className="budget-label">Budget: INR. {budget}</div>
+                <input
+                  type="range"
+                  id="budget-range"
+                  min="30000"
+                  max="500000"
+                  value={budget}
+                  onChange={handleBudgetChange}
+                />
               </div>
             </li>
             <li>
-              <button className="favorite-btn">
-                <i className="fas fa-heart"></i>
-                Favorites
-              </button>
-            </li>
-            <li>
-              <button className="cart-btn">
-                <i className="fas fa-shopping-cart"></i>
-                Cart
-              </button>
-            </li>
-            <li>
-              <button className="login-btn">Sign Up/Login</button>
+              <Link to="/signup" className="login-btn signup-btn"> {/* Added signup-btn class */}
+                Sign Up/Login
+              </Link>
             </li>
             <li>
               <button className="sell-btn" onClick={handleShowSellForm}>
@@ -128,11 +117,10 @@ const Landingpage = () => {
       </div>
 
       <footer>
-        {/*footer component*/}
         <p>&copy; 2023 Camera Project</p>
       </footer>
     </div>
   );
 };
 
-export default Landingpage;
+export default Landingpage
