@@ -1,23 +1,12 @@
 const mongoose = require('mongoose');
 
-// Define the schema for Camera
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  // Add any other fields you need for the user model
 });
 
-// Create a model based on the schema
-const User = mongoose.model('users', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
+

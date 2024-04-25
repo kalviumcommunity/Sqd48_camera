@@ -5,7 +5,6 @@ import './SignupForm.css'; // Import CSS file
 
 function SignupForm() {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: ''
   });
@@ -25,7 +24,6 @@ function SignupForm() {
       console.log(response.data); // Log success message or response data
       // Reset form fields after successful submission
       setFormData({
-        name: '',
         email: '',
         password: ''
       });
@@ -38,12 +36,8 @@ function SignupForm() {
   return (
     <div className="signup-form-container">
       <div className="signup-form">
-        <h2>Sign Up</h2>
+        <h2>Sign in <input type="button" value="" /></h2>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
-          </div>
           <div>
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
@@ -52,9 +46,8 @@ function SignupForm() {
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit">Sign in</button>
         </form>
-        <p>Have an account? <Link to="/signin">Sign in</Link></p>
       </div>
     </div>
   );
