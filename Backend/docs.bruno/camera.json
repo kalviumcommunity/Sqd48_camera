@@ -1,182 +1,183 @@
 [
-  {
-    "name": "Canon EOS 1500D",
-    "price": 31999
-  },
-  {
-    "name": "Nikon D3500",
-    "price": 27990
-  },
-  {
-    "name": "Sony Alpha a6000",
-    "price": 43990
-  },
-  {
-    "name": "Fujifilm X-T30",
-    "price": 73990
-  },
-  {
-    "name": "Panasonic Lumix DMC-G7",
-    "price": 42990
-  },
-  {
-    "name": "Olympus OM-D E-M10 Mark III",
-    "price": 29990
-  },
-  {
-    "name": "Leica D-Lux 7",
-    "price": 101990
-  },
-  {
-    "name": "Pentax K-70",
-    "price": 66990
-  },
-  {
-    "name": "Samsung NX500",
-    "price": 81990
-  },
-  {
-    "name": "Hasselblad X1D II 50C",
-    "price": 399995
-  },
-  {
-    "name": "Canon EOS 90D",
-    "price": 117995
-  },
-  {
-    "name": "Nikon Z6 II",
-    "price": 156995
-  },
-  {
-    "name": "Sony Alpha a7C",
-    "price": 144990
-  },
-  {
-    "name": "Fujifilm X-T4",
-    "price": 144990
-  },
-  {
-    "name": "Olympus OM-D E-M5 Mark III",
-    "price": 83990
-  },
-  {
-    "name": "Leica Q2 Monochrom",
-    "price": 411995
-  },
-  {
-    "name": "Pentax KP",
-    "price": 128990
-  },
-  {
-    "name": "Samsung NX1",
-    "price": 162995
-  },
-  {
-    "name": "Hasselblad X1D II 50C",
-    "price": 399995
-  },
-  {
-    "name": "Canon EOS R5",
-    "price": 339995
-  },
-  {
-    "name": "Nikon Z7 II",
-    "price": 242995
-  },
-  {
-    "name": "Sony Alpha a9 II",
-    "price": 351990
-  },
-  {
-    "name": "Fujifilm GFX 100S",
-    "price": 614990
-  },
-  {
-    "name": "Olympus OM-D E-M1X",
-    "price": 274990
-  },
-  {
-    "name": "Leica SL2-S",
-    "price": 569995
-  },
-  {
-    "name": "Canon EOS Rebel T7",
-    "price": 31999
-  },
-  {
-    "name": "Nikon D3500",
-    "price": 27990
-  },
-  {
-    "name": "Sony Alpha a6000",
-    "price": 43990
-  },
-  {
-    "name": "Fujifilm X-T30",
-    "price": 73990
-  },
-  {
-    "name": "Panasonic Lumix DMC-G7",
-    "price": 42990
-  },
-  {
-    "name": "Canon EOS M50",
-    "price": 46990
-  },
-  {
-    "name": "Nikon D5600",
-    "price": 56990
-  },
-  {
-    "name": "Sony Alpha a6100",
-    "price": 68990
-  },
-  {
-    "name": "Fujifilm X-T200",
-    "price": 45990
-  },
-  {
-    "name": "Panasonic Lumix DMC-GX85",
-    "price": 44990
-  },
-  {
-    "name": "Olympus PEN E-PL10",
-    "price": 39990
-  },
-  {
-    "name": "Leica D-Lux 7",
-    "price": 101990
-  },
-  {
-    "name": "Pentax K-S2",
-    "price": 48990
-  },
-  {
-    "name": "Samsung NX300",
-    "price": 33990
-  },
-  {
-    "name": "Hasselblad XCD 45P",
-    "price": 154995
-  },
-  {
-    "name": "Canon EOS Rebel SL3",
-    "price": 42990
-  },
-  {
-    "name": "Nikon D5300",
-    "price": 37990
-  },
-  {
-    "name": "Sony Alpha a6400",
-    "price": 84990
-  },
-  {
-    "name": "Fujifilm X-T100",
-    "price": 39990
-  },
-  {
-    "name": "Panasonic Lumix DC-G95",
-    "price": 75990
-  }
-]
+    {
+      "name": "Canon EOS 1500D",
+      "price": 31999
+    },
+    {
+      "name": "Nikon D3500",
+      "price": 27990
+    },
+    {
+      "name": "Sony Alpha a6000",
+      "price": 43990
+    },
+    {
+      "name": "Fujifilm X-T30",
+      "price": 73990
+    },
+    {
+      "name": "Panasonic Lumix DMC-G7",
+      "price": 42990
+    },
+    {
+      "name": "Olympus OM-D E-M10 Mark III",
+      "price": 29990
+    },
+    {
+      "name": "Leica D-Lux 7",
+      "price": 101990
+    },
+    {
+      "name": "Pentax K-70",
+      "price": 66990
+    },
+    {
+      "name": "Samsung NX500",
+      "price": 81990
+    },
+    {
+      "name": "Hasselblad X1D II 50C",
+      "price": 399995
+    },
+    {
+      "name": "Canon EOS 90D",
+      "price": 117995
+    },
+    {
+      "name": "Nikon Z6 II",
+      "price": 156995
+    },
+    {
+      "name": "Sony Alpha a7C",
+      "price": 144990
+    },
+    {
+      "name": "Fujifilm X-T4",
+      "price": 144990
+    },
+    {
+      "name": "Olympus OM-D E-M5 Mark III",
+      "price": 83990
+    },
+    {
+      "name": "Leica Q2 Monochrom",
+      "price": 411995
+    },
+    {
+      "name": "Pentax KP",
+      "price": 128990
+    },
+    {
+      "name": "Samsung NX1",
+      "price": 162995
+    },
+    {
+      "name": "Hasselblad X1D II 50C",
+      "price": 399995
+    },
+    {
+      "name": "Canon EOS R5",
+      "price": 339995
+    },
+    {
+      "name": "Nikon Z7 II",
+      "price": 242995
+    },
+    {
+      "name": "Sony Alpha a9 II",
+      "price": 351990
+    },
+    {
+      "name": "Fujifilm GFX 100S",
+      "price": 614990
+    },
+    {
+      "name": "Olympus OM-D E-M1X",
+      "price": 274990
+    },
+    {
+      "name": "Leica SL2-S",
+      "price": 569995
+    },
+    {
+      "name": "Canon EOS Rebel T7",
+      "price": 31999
+    },
+    {
+      "name": "Nikon D3500",
+      "price": 27990
+    },
+    {
+      "name": "Sony Alpha a6000",
+      "price": 43990
+    },
+    {
+      "name": "Fujifilm X-T30",
+      "price": 73990
+    },
+    {
+      "name": "Panasonic Lumix DMC-G7",
+      "price": 42990
+    },
+    {
+      "name": "Canon EOS M50",
+      "price": 46990
+    },
+    {
+      "name": "Nikon D5600",
+      "price": 56990
+    },
+    {
+      "name": "Sony Alpha a6100",
+      "price": 68990
+    },
+    {
+      "name": "Fujifilm X-T200",
+      "price": 45990
+    },
+    {
+      "name": "Panasonic Lumix DMC-GX85",
+      "price": 44990
+    },
+    {
+      "name": "Olympus PEN E-PL10",
+      "price": 39990
+    },
+    {
+      "name": "Leica D-Lux 7",
+      "price": 101990
+    },
+    {
+      "name": "Pentax K-S2",
+      "price": 48990
+    },
+    {
+      "name": "Samsung NX300",
+      "price": 33990
+    },
+    {
+      "name": "Hasselblad XCD 45P",
+      "price": 154995
+    },
+    {
+      "name": "Canon EOS Rebel SL3",
+      "price": 42990
+    },
+    {
+      "name": "Nikon D5300",
+      "price": 37990
+    },
+    {
+      "name": "Sony Alpha a6400",
+      "price": 84990
+    },
+    {
+      "name": "Fujifilm X-T100",
+      "price": 39990
+    },
+    {
+      "name": "Panasonic Lumix DC-G95",
+      "price": 75990
+    }
+  ]
+  
