@@ -9,9 +9,11 @@ const SellCamera = require('./models/selldata');
 const routes = require("./routes");
 const cors = require('cors');
 const { userValidationSchema } = require('./models/validator.js');
+const cookieParser = require("cookie-parser");
 
 app.use("/", routes);
 app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
 
 mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -53,32 +55,29 @@ app.get('/sell-cameras', async (req, res) => {
   }
 });
 
-// Route to handle user signup
 app.post('/signup', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validate user data
-    const { error } = userValidationSchema.validate({ email, password });
-    if (error) {
-      return res.status(400).json({ error: error.details[0].message });
-    }
-
-    // Check if the user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ error: 'User already exists' });
-    }
-
     // Create a new user
     const newUser = new User({ email, password });
     await newUser.save();
+
+    // Set username to cookie upon signup
+    res.cookie('username', email, { httpOnly: true });
 
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
     console.error('Error during signup:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+// Logout endpoint
+app.post('/logout', (req, res) => {
+  // Clear cookie by setting it to an empty string and setting maxAge to 0
+  res.clearCookie('username', { httpOnly: true, maxAge: 0 });
+  res.status(200).json({ message: 'Logout successful' });
 });
 
 
