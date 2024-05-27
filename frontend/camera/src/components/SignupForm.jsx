@@ -22,15 +22,25 @@ function SignupForm() {
     try {
       const response = await axios.post('http://localhost:3001/signup', formData);
       console.log(response.data); // Log success message or response data
+      // Set cookie
+      document.cookie = `username=${formData.email};`;
       // Reset form fields after successful submission
       setFormData({
         email: '',
         password: ''
       });
+      // Display success message
+      alert('User signed up successfully!');
     } catch (error) {
       console.error('Error submitting form:', error);
       // Handle error as needed
     }
+  };
+  
+  // Function to get the value of a cookie by name
+  const getCookieValue = (name) => {
+    const cookie = document.cookie.split('; ').find(row => row.startsWith(`${name}=`));
+    return cookie ? cookie.split('=')[1] : '';
   };
 
   return (
