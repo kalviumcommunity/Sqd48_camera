@@ -1,58 +1,40 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
-require('dotenv').config();
+const port = 3001;
 const mongoose = require('mongoose');
-const Camera = require('./models/data');
-const User = require('./models/users');
-const SellCamera = require('./models/selldata');
 const routes = require("./routes");
 const cors = require('cors');
+
+// const { userValidationSchema } = require('./models/validator.js');
+const cookieParser = require("cookie-parser");
+app.use(express.json());
+
 const { userValidationSchema } = require('./models/validator.js');
 const cookieParser = require("cookie-parser");
 
-app.use("/", routes);
+
 app.use(cors());
 app.use(cookieParser());
-app.use(express.json());
 
-mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+
+app.use('/',routes)
+
+
+mongoose.connect(process.env.mongoURI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
 
-// Route to fetch cameras for the landing page
-app.get('/cameras', async (req, res) => {
-  try {
-    const cameras = await Camera.find();
-    res.json(cameras);
-  } catch (error) {
-    console.error('Error retrieving cameras:', error);
-    res.status(500).json({ message: 'Internal server error' });
+app.get('/mongodbconnection', async (req, res)=>{
+  try{
+    if(mongoose.connection.readyState === 1){
+      res.send("Connected to DB")
+  }}catch(err){
+    res.send("Connection to DB failed")
   }
-});
 
-// Route to add a new camera to the landing page
-app.post('/cameras', async (req, res) => {
-  try {
-    const { name, imgurl, price } = req.body;
-    const newCamera = new Camera({ name, imgurl, price });
-    await newCamera.save();
-    res.status(200).json({ message: 'Camera added successfully' });
-  } catch (error) {
-    console.error('Error adding camera:', error);
-    res.status(500).json({ error: 'Failed to add camera' });
-  }
-});
+})
 
-// Route to fetch sell cameras for the sell page
-app.get('/sell-cameras', async (req, res) => {
-  try {
-    const sellCameras = await SellCamera.find();
-    res.json(sellCameras);
-  } catch (error) {
-    console.error('Error retrieving sell cameras:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
 });
 
 app.post('/signup', async (req, res) => {
@@ -123,12 +105,8 @@ app.put('/sell-cameras/:id', async (req, res) => {
 });
 
 
-// Route to serve the SellForm.jsx file for updating a sell camera
-app.get('/update-sell-camera/:id', (req, res) => {
-  res.sendFile(__dirname + '/path/to/UpdateSellCameraForm.jsx'); // Replace 'path/to/UpdateSellCameraForm.jsx' with the actual path
-});
 
-// Listen on specified port
+
 if (require.main === module) {
   app.listen(port, () => {
     console.log(`🚀 Server running on PORT: ${port}`);
