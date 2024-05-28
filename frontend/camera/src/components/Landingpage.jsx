@@ -8,10 +8,12 @@ const Landingpage = () => {
   const [cameras, setCameras] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [budget, setBudget] = useState(500000);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchCameras();
+    checkLoginStatus();
   }, []);
 
   const fetchCameras = async () => {
@@ -26,6 +28,11 @@ const Landingpage = () => {
     }
   };
 
+  const checkLoginStatus = () => {
+    const username = document.cookie.split('; ').find(row => row.startsWith('username='));
+    setIsLoggedIn(!!username);
+  };
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
   };
@@ -36,15 +43,23 @@ const Landingpage = () => {
 
   const filterCamerasByBudgetAndBrand = (cameras, budget, searchTerm) => {
     return cameras
-      .sort((a, b) => b.price - a.price) // Sort cameras by price in descending order
+      .sort((a, b) => b.price - a.price)
       .filter((camera) => camera.price <= budget)
-      .filter((camera) =>
-        camera.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      .filter((camera) => camera.name.toLowerCase().includes(searchTerm.toLowerCase()));
   };
 
   const handleShowSellForm = () => {
     navigate('/sell');
+  };
+
+  const handleLogout = async () => {
+    try {
+      await axios.post('http://localhost:3001/logout');
+      setIsLoggedIn(false);
+      document.cookie = 'username=; Max-Age=0; path=/'; // Clear the cookie
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   return (
@@ -78,16 +93,34 @@ const Landingpage = () => {
                 />
               </div>
             </li>
-            <li>
-              <Link to="/signup" className="login-btn signup-btn"> {/* Added signup-btn class */}
-                Sign Up/Login
-              </Link>
-            </li>
-            <li>
-              <button className="sell-btn" onClick={handleShowSellForm}>
-                Sell
-              </button>
-            </li>
+            {!isLoggedIn && (
+              <>
+                <li>
+                  <Link to="/signup" className="login-btn signup-btn">
+                    Sign Up
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="login-btn">
+                    Login
+                  </Link>
+                </li>
+              </>
+            )}
+            {isLoggedIn && (
+              <>
+                <li>
+                  <button className="sell-btn" onClick={handleShowSellForm}>
+                    Sell
+                  </button>
+                </li>
+                <li>
+                  <button className="logout-btn" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
@@ -98,19 +131,21 @@ const Landingpage = () => {
           <p>Explore our collection of high-quality cameras and accessories.</p>
           <div className="cameras-container">
             <div className="row">
-              {filterCamerasByBudgetAndBrand(cameras, budget, searchTerm).map(
-                (camera, index) => (
-                  <div key={index} className="column">
-                    <div className="camera-item">
-                      <img src={camera.imgurl} alt={camera.name} />
-                      <div className="camera-details">
-                        <strong><p className="camera-model">{camera.name}</p></strong>
-                        <strong><p className="camera-price">INR. {camera.price}</p></strong>
-                      </div>
+              {filterCamerasByBudgetAndBrand(cameras, budget, searchTerm).map((camera, index) => (
+                <div key={index} className="column">
+                  <div className="camera-item">
+                    <img src={camera.imgurl} alt={camera.name} />
+                    <div className="camera-details">
+                      <strong>
+                        <p className="camera-model">{camera.name}</p>
+                      </strong>
+                      <strong>
+                        <p className="camera-price">INR. {camera.price}</p>
+                      </strong>
                     </div>
                   </div>
-                )
-              )}
+                </div>
+              ))}
             </div>
           </div>
         </>
@@ -123,4 +158,4 @@ const Landingpage = () => {
   );
 };
 
-export default Landingpage
+export default Landingpage;

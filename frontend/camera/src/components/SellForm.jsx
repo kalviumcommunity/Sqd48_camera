@@ -13,12 +13,30 @@ const SellForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Function to get the value of the 'username' cookie
+function getUsernameFromCookie() {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    // Check if this cookie is the 'username' cookie
+    if (cookie.startsWith('username=')) {
+      // Return the value of the 'username' cookie
+      return cookie.substring('username='.length);
+    }
+  }
+  // Return null if the 'username' cookie is not found
+  return null;
+}
+
+// Usage example
+const username = getUsernameFromCookie();
 
     try {
       const formData = {
         name: modelName,
         imgurl: imageUrl,
         price: parseFloat(price),
+        
       };
 
       const response = await axios.post('http://localhost:3001/sell-cameras', formData);

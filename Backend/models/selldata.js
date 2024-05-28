@@ -5,6 +5,7 @@ const sellItemSchema = new mongoose.Schema({
   name: String,
   imgurl: String,
   price: Number
+  
 });
 
 // Create a model based on the schema, specifying the collection name

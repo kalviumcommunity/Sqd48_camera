@@ -1,12 +1,14 @@
+const { string } = require('joi');
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
+  username:{ type: String,required:true,unique:true},
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   // Add any other fields you need for the user model
 });
 
-const User = mongoose.model('User', userSchema);
+const UsersModal = mongoose.model('users', UserSchema);
 
-module.exports = User;
+module.exports = UsersModal;
 
