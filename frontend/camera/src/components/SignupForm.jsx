@@ -5,7 +5,9 @@ import './SignupForm.css';
 
 function SignupForm() {
   const [formData, setFormData] = useState({
+
     username: '',
+    name: '',
     email: '',
     password: ''
   });
@@ -24,15 +26,25 @@ function SignupForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
       const response = await axios.post('http://localhost:3001/users', formData);
       console.log(response.data);
       document.cookie = `username=${formData.username}; path=/`;
       navigate('/');
       setFormData({
         username: '',
+      const response = await axios.post('http://localhost:3001/signup', formData);
+      console.log(response.data); // Log success message or response data
+      // Set cookie
+      document.cookie = `username=${formData.email};`;
+      // Reset form fields after successful submission
+      setFormData({
+        name: '',
         email: '',
         password: ''
       });
+      // Display success message
+      alert('User signed up successfully!');
     } catch (error) {
       if (error.response && error.response.status === 409) {
         setError('User already exists');
@@ -41,8 +53,14 @@ function SignupForm() {
       }
     }
   };
+  
+  // Function to get the value of a cookie by name
+  const getCookieValue = (name) => {
+    const cookie = document.cookie.split('; ').find(row => row.startsWith(`${name}=`));
+    return cookie ? cookie.split('=')[1] : '';
+  };
 
-  return (
+   return (
     <div className="signup-form-container">
       <div className="signup-form">
         <h2>Sign Up</h2>
