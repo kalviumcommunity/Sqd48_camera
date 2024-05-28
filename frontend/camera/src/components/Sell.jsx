@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const Sell = () => {
   const [sellItems, setSellItems] = useState([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     fetchSellCameras();
@@ -55,6 +56,10 @@ const Sell = () => {
     handleUpdate(cameraId, updatedData);
   };
 
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   // Update Form Component
   const UpdateForm = ({ camera, handleUpdateSubmit }) => {
     const [updatedData, setUpdatedData] = useState({ name: camera.name, price: camera.price, imgurl: camera.imgurl });
@@ -93,8 +98,10 @@ const Sell = () => {
   return (
     <div className="sell-page">
       <div className="header">
-        <div className="logo">
-          <h1>Camera Project</h1>
+        <div className="logo"> 
+          <Link to="/" className="logo-btn">
+          <h1>Cloto</h1>
+          </Link>
         </div>
         <nav className="navbar">
           <ul>
@@ -102,6 +109,15 @@ const Sell = () => {
               <Link to="/sellform" className="add-btn">
                 Add
               </Link>
+            </li>
+            <li className="dropdown">
+              <button onClick={toggleDropdown} className="dropbtn">
+                Menu
+              </button>
+              {dropdownOpen && (
+                <div className="dropdown-content">
+                </div>
+              )}
             </li>
           </ul>
         </nav>

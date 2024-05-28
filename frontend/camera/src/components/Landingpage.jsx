@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
 const Landingpage = () => {
   const [cameras, setCameras] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -67,7 +66,7 @@ const Landingpage = () => {
     <div className="landing-page">
       <div className="header">
         <div className="logo">
-          <h1>Camera Project</h1>
+          <h1>Cloto</h1>
         </div>
         <nav className="navbar">
           <ul>
