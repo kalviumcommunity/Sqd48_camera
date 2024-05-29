@@ -96,8 +96,8 @@ router.get('/sell-cameras', async (req, res) => {
 
 router.post('/sell-cameras', async (req, res) => {
   try {
-    const { name, imgurl, price } = req.body;
-    const newSellCamera = new SellCamera({ name, imgurl, price });
+    const { name, imgurl, price, created_by } = req.body;
+    const newSellCamera = new SellCamera({ name, imgurl, price,created_by });
     await newSellCamera.save();
     res.status(200).json(newSellCamera);
   } catch (error) {
