@@ -9,9 +9,7 @@ const Sell = () => {
   const [dropdownOpen, setDropdownOpen] = useState();
 
   const [flag,setFlag]=useState(false)
-
-
-
+  
   useEffect(() => {
     fetchSellCameras();
     dropdownmenu()
