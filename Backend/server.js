@@ -14,6 +14,7 @@ mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopolo
   .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // Serve camera data
+
 app.get('/cameras', async (req, res) => {
   try {
     const cameras = await Camera.find(); // Retrieve all cameras from the database
