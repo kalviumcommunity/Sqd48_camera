@@ -1,0 +1,19 @@
+meta {
+  name: addCameradat
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3001/cameras
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Canon EOS 1500D",
+      "price": 1999,
+      "imgurl": "https://d2xamzlzrdbdbn.cloudfront.net/products/f259a9e2-1ee3-4a94-afa8-27db1fcb8880"
+    }
+}

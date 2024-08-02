@@ -1,15 +1,23 @@
-import {BrowserRouter, Routes, Route}  from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landingpage from './components/Landingpage';
+import SellForm from './components/SellForm';
+import Sell from './components/Sell';
+import SignupForm from './components/SignupForm';
+import LoginPage from './components/loginpage';
 
 function App() {
-
-  return(
-    <BrowserRouter>
+  return (
+    <Router>
       <Routes>
-        <Route path = "/" element={<Landingpage/>} />
+        <Route path="/" element={<Landingpage />} />
+        <Route path="/sellform" element={<SellForm />} />
+        <Route path="/sell" element={<Sell />} />
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
-    </BrowserRouter>
-  )
+    </Router>
+  );
 }
 
-export default App; 
+export default App;
