@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-import './loginpage.css'; // Import CSS file
+import { useNavigate } from 'react-router-dom';
+import './loginpage.css';
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ function LoginPage() {
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +22,12 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/login', formData);
-      console.log(response.data); // Log success message or response data
-      // Redirect to the homepage upon successful login
+      const response = await axios.post(
+        'https://camerabackend.onrender.com/login',
+        formData,
+        { withCredentials: true } // Important if your backend sets cookies
+      );
+      console.log(response.data);
       document.cookie = `username=${formData.username}`;
       navigate('/');
     } catch (error) {

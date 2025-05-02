@@ -30,10 +30,10 @@ const SellForm = () => {
         name: modelName,
         imgurl: imageUrl,
         price: parseFloat(price),
-        created_by:username, // Include username in the form data
+        created_by: username,
       };
 
-      const response = await axios.post('http://localhost:3001/sell-cameras', formData);
+      const response = await axios.post('https://camerabackend.onrender.com/sell-cameras', formData);
 
       if (response.status === 200) {
         console.log('Camera added successfully');
